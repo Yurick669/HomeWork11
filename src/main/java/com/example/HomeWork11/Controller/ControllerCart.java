@@ -1,6 +1,7 @@
 package com.example.HomeWork11.Controller;
 
 
+import com.example.HomeWork11.Cart;
 import com.example.HomeWork11.Service.ServiceCart;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,13 +12,15 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.ArrayList;
 
 @RestController
-@RequestMapping("store/order")
+@RequestMapping("/order")
 public class ControllerCart {
 
     private final ServiceCart cartService;
+    private final Cart cart;
 
-    public ControllerCart(ServiceCart cartService) {
+    public ControllerCart(ServiceCart cartService, Cart cart) {
         this.cartService = cartService;
+        this.cart = cart;
     }
 
     @GetMapping()
@@ -28,7 +31,7 @@ public class ControllerCart {
 
     @GetMapping("/add")
     public String addItemsToCart(@RequestParam ArrayList<Integer> id) {
-        cartService.addItemsToCart(id);
+        cart.add(id);
         return "Товар добавлен в корзину";
     }
 

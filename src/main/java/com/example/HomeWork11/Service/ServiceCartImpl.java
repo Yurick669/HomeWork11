@@ -19,13 +19,7 @@ public class ServiceCartImpl implements ServiceCart {
     @Override
     public void addItemsToCart(ArrayList<Integer> id) {
 
-        for (Integer newId : id) {
-            if (cart.getItems().containsKey(newId)) {
-                cart.getItems().put(newId, cart.getItems().get(newId) + 1);
-            } else {
-                cart.getItems().put(newId, 1);
-            }
-        }
+
     }
 
     @Override
